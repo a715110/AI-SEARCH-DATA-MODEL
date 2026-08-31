@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <description>AI Data Model for vector-based search</description>
+  <groupId>com.dodaso.ecosystem.ai.data.model</groupId>
+  <artifactId>ai-search-data-model</artifactId>
+  <modelVersion>4.0.0</modelVersion>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <parent>
+    <artifactId>parent-project</artifactId>
+    <groupId>com.dodaso.ecosystem</groupId>
+    <version>1.0.0</version>
+    <relativePath>../pomAll.xml</relativePath>
+  </parent>
+
+  <properties>
+    <java.version>21</java.version>
+    <revision>1.0.0-SNAPSHOT</revision>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.pgvector</groupId>
+      <artifactId>pgvector</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-vector</artifactId>
+      <version>${hibernate.version}</version> <!-- match your Hibernate version, 6.4+ -->
+    </dependency>
+
+    <dependency>
+      <artifactId>baseline-common</artifactId>
+      <groupId>com.dodaso.ecosystem.baseline.common</groupId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <artifactId>ecws-data-model</artifactId>
+      <groupId>com.dodaso.ecosystem.ecws.data.model</groupId>
+      <version>1.0.0-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>21</source>
+          <target>21</target>
+        </configuration>
+        <groupId>org.apache.maven.plugins</groupId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
