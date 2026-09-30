@@ -89,6 +89,12 @@ public class EcwsEmbedding extends AuditableField {
     @Column(name = "parent_source_id")
     protected Long parentSourceId;
 
+    // Task the row belongs to, for every source type (plan PLAN-attachment-to-common-service §7.5).
+    // parent_source_id can't hold it: comment files use it for the comment id. NULL on rows
+    // written before this column existed.
+    @Column(name = "task_id")
+    protected Long taskId;
+
     public Long getId() {
         return id;
     }
@@ -259,5 +265,13 @@ public class EcwsEmbedding extends AuditableField {
 
     public void setParentSourceId(Long parentSourceId) {
         this.parentSourceId = parentSourceId;
+    }
+
+    public Long getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(Long taskId) {
+        this.taskId = taskId;
     }
 }

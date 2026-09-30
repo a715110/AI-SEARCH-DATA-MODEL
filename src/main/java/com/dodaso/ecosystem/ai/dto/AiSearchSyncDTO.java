@@ -31,4 +31,8 @@ public class AiSearchSyncDTO implements Serializable {
 
     // Hierarchy: task_comment -> task.id, file_attachment -> task.id or comment.id
     private Long parentSourceId;
+
+    // Task the source belongs to (plan §7.5). Optional: AiSyncService derives it for tasks, comments
+    // and task files; comment files must send it (their parentSourceId is the comment id).
+    private Long taskId;
 }
