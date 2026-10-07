@@ -24,6 +24,10 @@ public class AiGenerateDTO implements Serializable {
     // Text the sources are found with; null means generatePrompt. A follow-up sends the earlier
     // questions too, so "what about Safari?" still finds the login tasks.
     private String searchText;
+    // Logged-in user's login_id; their EARS alerts and reminders are added to the answer's context
+    private String loginId;
+    // EARS alerts the answer could use: the user's own and those on the source tasks
+    private List<AiAlertDTO> alerts;
     public AiGenerateDTO(String generatePrompt) {
         this.generatePrompt = generatePrompt;
     }
