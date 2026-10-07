@@ -28,6 +28,8 @@ public class AiGenerateDTO implements Serializable {
     private String loginId;
     // EARS alerts the answer could use: the user's own and those on the source tasks
     private List<AiAlertDTO> alerts;
+    // Files attached to this question; their text is added to the answer's context
+    private List<AiChatFileDTO> files;
     public AiGenerateDTO(String generatePrompt) {
         this.generatePrompt = generatePrompt;
     }
