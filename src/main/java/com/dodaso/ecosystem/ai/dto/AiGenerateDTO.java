@@ -30,6 +30,10 @@ public class AiGenerateDTO implements Serializable {
     private List<AiAlertDTO> alerts;
     // Files attached to this question; their text is added to the answer's context
     private List<AiChatFileDTO> files;
+    // Files made from the answer (Word, Excel), without their bytes; download them by id
+    private List<AiGeneratedFileDTO> generatedFiles;
+    // With attached files the answer comes from the files only; true searches tasks and alerts too
+    private Boolean searchTasksWithFiles;
     public AiGenerateDTO(String generatePrompt) {
         this.generatePrompt = generatePrompt;
     }
