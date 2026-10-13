@@ -34,6 +34,12 @@ public class AiGenerateDTO implements Serializable {
     private List<AiGeneratedFileDTO> generatedFiles;
     // With attached files the answer comes from the files only; true searches tasks and alerts too
     private Boolean searchTasksWithFiles;
+    // Saved chat the question belongs to; null starts a new one. The answer returns the chat's id.
+    private Long conversationId;
+    // Saved question and answer, in the response
+    private Long messageId;
+    // 'ECWS' or 'ELCM'; null means 'ECWS'
+    private String appCode;
     public AiGenerateDTO(String generatePrompt) {
         this.generatePrompt = generatePrompt;
     }
