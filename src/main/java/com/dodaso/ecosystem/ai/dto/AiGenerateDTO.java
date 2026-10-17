@@ -40,6 +40,9 @@ public class AiGenerateDTO implements Serializable {
     private Long messageId;
     // 'ECWS' or 'ELCM'; null means 'ECWS'
     private String appCode;
+    // Tasks the user may read, set by the app service; results of other tasks are left out
+    // before the answer is written. null means no limit.
+    private List<Long> readableTaskIds;
     public AiGenerateDTO(String generatePrompt) {
         this.generatePrompt = generatePrompt;
     }
