@@ -24,7 +24,7 @@ public class AiChatConversation extends AuditableField {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    // Tenant; null until ECWS has a company
+    // Unused, always null: each customer company has its own instance
     @Column(name = "company_id")
     private Long companyId;
 
