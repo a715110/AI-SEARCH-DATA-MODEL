@@ -17,7 +17,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 @Entity
-@Table(name = "ecws_embeddings")
+@Table(name = "dodaso_embeddings")
 public class EcwsEmbedding extends AuditableField {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,7 +51,8 @@ public class EcwsEmbedding extends AuditableField {
     @Column(name = "status", length = 50)
     protected String status;
 
-    @Column(name = "project_id", nullable = false)
+    // ECWS project; null on ELCM rows
+    @Column(name = "project_id")
     protected Long projectId;
 
     @Column(name = "created_by_user_id", nullable = false)
@@ -60,7 +61,8 @@ public class EcwsEmbedding extends AuditableField {
     @Column(name = "updated_by_user_id")
     protected Long updatedByUserId;
 
-    @Column(name = "workspace_id", nullable = false)
+    // ECWS content kind 1..4 (EmbeddingSourceTypeEnum), not an ELCM workspace; null on ELCM rows
+    @Column(name = "workspace_id")
     protected Long workspaceId;
 
     @Column(name = "user_id")
@@ -94,6 +96,33 @@ public class EcwsEmbedding extends AuditableField {
     // written before this column existed.
     @Column(name = "task_id")
     protected Long taskId;
+
+    // Unused, always null: each customer company has its own instance
+    @Column(name = "company_id")
+    protected Long companyId;
+
+    // AppCodeEnum name
+    @Column(name = "app_code", nullable = false, length = 10)
+    protected String appCode = "ECWS";
+
+    // Access boundary inside the instance: ELCM workspace.id; null on ECWS rows (they use project_id)
+    @Column(name = "scope_id")
+    protected Long scopeId;
+
+    // Record a result opens on ELCM rows (contract_record, staged_document); null on ECWS rows (they use task_id)
+    @Column(name = "owner_type", length = 50)
+    protected String ownerType;
+
+    @Column(name = "owner_id")
+    protected Long ownerId;
+
+    // Label shown in results (ELCM record code, file name)
+    @Column(name = "title", length = 500)
+    protected String title;
+
+    // Model that produced the vector; vectors of different models can't be compared. Null on older rows
+    @Column(name = "embedding_model", length = 100)
+    protected String embeddingModel;
 
     public Long getId() {
         return id;
@@ -273,5 +302,61 @@ public class EcwsEmbedding extends AuditableField {
 
     public void setTaskId(Long taskId) {
         this.taskId = taskId;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
+
+    public String getAppCode() {
+        return appCode;
+    }
+
+    public void setAppCode(String appCode) {
+        this.appCode = appCode;
+    }
+
+    public Long getScopeId() {
+        return scopeId;
+    }
+
+    public void setScopeId(Long scopeId) {
+        this.scopeId = scopeId;
+    }
+
+    public String getOwnerType() {
+        return ownerType;
+    }
+
+    public void setOwnerType(String ownerType) {
+        this.ownerType = ownerType;
+    }
+
+    public Long getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getEmbeddingModel() {
+        return embeddingModel;
+    }
+
+    public void setEmbeddingModel(String embeddingModel) {
+        this.embeddingModel = embeddingModel;
     }
 }

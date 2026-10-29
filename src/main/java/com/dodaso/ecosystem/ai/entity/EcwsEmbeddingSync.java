@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "ecws_embedding_sync")
+@Table(name = "dodaso_embedding_sync")
 @Getter
 @Setter
 public class EcwsEmbeddingSync extends AuditableField {
@@ -52,4 +52,16 @@ public class EcwsEmbeddingSync extends AuditableField {
 
     @Column(name = "user_id")
     private Long userId;
+
+    // Unused, always null: each customer company has its own instance
+    @Column(name = "company_id")
+    private Long companyId;
+
+    // AppCodeEnum name
+    @Column(name = "app_code", nullable = false, length = 10)
+    private String appCode = "ECWS";
+
+    // ELCM workspace.id; null on ECWS rows
+    @Column(name = "scope_id")
+    private Long scopeId;
 }

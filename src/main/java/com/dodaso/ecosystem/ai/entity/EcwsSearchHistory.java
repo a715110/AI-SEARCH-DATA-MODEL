@@ -11,7 +11,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "ecws_search_history")
+@Table(name = "dodaso_search_history")
 @Getter
 @Setter
 public class EcwsSearchHistory extends AuditableField {
@@ -60,6 +60,22 @@ public class EcwsSearchHistory extends AuditableField {
 
     @Column(name = "updated_by_user_id")
     private Long updatedByUserId;
+
+    // Unused, always null: each customer company has its own instance
+    @Column(name = "company_id")
+    private Long companyId;
+
+    // AppCodeEnum name
+    @Column(name = "app_code", nullable = false, length = 10)
+    private String appCode = "ECWS";
+
+    // Scopes searched (ELCM workspace ids), e.g. "[3, 7]"
+    @Column(name = "scope_ids", length = 1000)
+    private String scopeIds;
+
+    // ELCM users are login strings, not Long ids
+    @Column(name = "user_ref", length = 255)
+    private String userRef;
 
 
 }
