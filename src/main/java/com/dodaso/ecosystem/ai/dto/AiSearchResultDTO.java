@@ -25,6 +25,13 @@ public class AiSearchResultDTO implements Serializable {
     private Long parentSourceId;
     private Long taskId;
 
+    // Scoped (ELCM) results; null on ECWS results
+    private String appCode;
+    private Long scopeId;
+    private String ownerType;
+    private Long ownerId;
+    private String title;
+
     public String getLabel() {
         if (sourceType == null) return "#" + sourceId;
         switch (sourceType) {
