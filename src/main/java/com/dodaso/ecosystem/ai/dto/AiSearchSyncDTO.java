@@ -35,4 +35,7 @@ public class AiSearchSyncDTO implements Serializable {
     // Task the source belongs to (plan §7.5). Optional: AiSyncService derives it for tasks, comments
     // and task files; comment files must send it (their parentSourceId is the comment id).
     private Long taskId;
+
+    // Task type name (e.g. "ELCM Review"), written into a task's embedded text. Tasks only.
+    private String taskType;
 }
