@@ -41,4 +41,13 @@ public class AiCatchUpDTO implements Serializable {
   @Builder.Default
   private List<AiCatchUpActionDTO> actions = new ArrayList<>();
   private int droppedActions;
+  /** ADDED 2026-11-27 (draft reply): the name of the person the draft is written for. */
+  private String drafterName;
+  /** ADDED 2026-11-27 (draft reply): what the person wants the reply to say; may be empty. */
+  private String draftInstruction;
+  /** ADDED 2026-11-27 (draft reply): the draft, plain text; null when the model gave none. */
+  private String draft;
+  /** ADDED 2026-11-27 (draft reply): refs of the items the draft answers; all were sent. */
+  @Builder.Default
+  private List<String> draftRefs = new ArrayList<>();
 }
