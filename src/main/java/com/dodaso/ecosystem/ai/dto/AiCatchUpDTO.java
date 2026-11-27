@@ -50,4 +50,8 @@ public class AiCatchUpDTO implements Serializable {
   /** ADDED 2026-11-27 (draft reply): refs of the items the draft answers; all were sent. */
   @Builder.Default
   private List<String> draftRefs = new ArrayList<>();
+  /** ADDED 2026-11-27 (audit trail): the model that answered, as configured. */
+  private String model;
+  /** ADDED 2026-11-27 (audit trail): every prompt sent for this answer, one after the other. */
+  private String promptSent;
 }
