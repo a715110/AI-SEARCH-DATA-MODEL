@@ -29,4 +29,16 @@ public class AiCatchUpDTO implements Serializable {
   @Builder.Default
   private List<AiCatchUpPointDTO> points = new ArrayList<>();
   private int droppedPoints;
+  /** ADDED 2026-11-27: true when the caller also wants proposed action items. */
+  private boolean wantActions;
+  /** ADDED 2026-11-27: people an action may be given to; the model may name no one else. */
+  @Builder.Default
+  private List<AiCatchUpPersonDTO> candidateOwners = new ArrayList<>();
+  /** ADDED 2026-11-27: titles of sub-tasks that exist already, so they are not proposed again. */
+  @Builder.Default
+  private List<String> existingSubTasks = new ArrayList<>();
+  /** ADDED 2026-11-27: the proposed action items, each with at least one valid ref. */
+  @Builder.Default
+  private List<AiCatchUpActionDTO> actions = new ArrayList<>();
+  private int droppedActions;
 }
